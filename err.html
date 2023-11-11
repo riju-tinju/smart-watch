@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Err Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            min-width: 100vw;
+            background: #1C1C1C;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box{
+            text-align: left;
+            max-width: 600px;
+            height: auto;
+            color: white;
+            padding: 30px;
+        }
+        h3{
+            color: rgb(255, 127, 127);
+        }
+        .box p{
+            font-size: 18px;
+            line-height: 30px;
+            color: rgba(255, 255, 255, 0.816);
+            max-width: 400px;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h3>Order Unsuccessful!</h3>
+        <p>
+            An error occurred while attempting to place your order. Please try again.
+            <br><a style="color: rgb(255, 127, 127);font-size: 16px;" href="/">Retry Now</a>
+        </p>
+    </div>
+</body>
+
+</html>

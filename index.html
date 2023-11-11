@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> T800 Ultra Blotooth Calling Smart Watch</title>
+    <style>
+        /* Override autocomplete styles for input */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+            /* Adjust the color to your preference */
+            transition: background-color 5000s ease-in-out 0s;
+            /* Ensure the transition persists */
+        }
+
+        /* Override autocomplete styles for select */
+        select:-webkit-autofill,
+        select:-webkit-autofill:hover,
+        select:-webkit-autofill:focus,
+        select:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+            /* Adjust the color to your preference */
+            transition: background-color 5000s ease-in-out 0s;
+            /* Ensure the transition persists */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            /* Dark background */
+            color: #fff;
+        }
+
+        #order-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            /* background: rgba(255, 255, 255, 0.1); */
+            /* Glassmorphic style */
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        #order-form {
+            display: grid;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 5px;
+            background: rgb(255 255 255 / 4%);
+            color: #fff;
+            margin-top: 5px;
+        }
+
+        button {
+            background-color: orange;
+            /* Primary color is orange */
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: rgb(247, 201, 117);
+            /* Primary color is orange */
+            cursor: pointer;
+        }
+        input.typed {
+            border-color: green;
+            /* Change the border color to green */
+            border: 1px solid green;
+        }
+
+        select.typed {
+            border-color: green;
+            /* Change the border color to green */
+            border: 1px solid green;
+        }
+
+        .qtyOption {
+            background-color: #1a1a1a;
+            padding: 12px auto;
+        }
+
+        .box {
+            height: 30px;
+            width: 20px;
+        }
+
+        .error {
+            color: rgb(213, 106, 106);
+            margin: 10 0px;
+        }
+
+        .iBox {
+            max-width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 600px) {
+            #order-container {
+                margin: 50px 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="order-container">
+        <div class="iBox">
+            <img src="product_cover_image.jpg" alt="Product Cover Image"
+                style="width: auto; max-height: 200px; object-fit: cover; margin:10px auto;">
+        </div>
+        <h3 style="text-align: center; color: rgb(255, 149, 0);">T800 Ultra Smart Watch</h3>
+        <h2 style="text-align: center;color: #ffffffa3;">999 /-</h2>
+        <p style="text-align: center;color: #f5bdbda3;margin-bottom: 60px;">This offer ends soon.</p>
+        <form id="order-form">
+            <!-- Product Section -->
+            <label for="quantity">Quantity: *</label>
+            <select id="quantity" name="qty" style="border: 1px solid green;" class="styledInput" required>
+                <option class="qtyOption" value="1">1</option>
+                <option class="qtyOption" value="2">2</option>
+                <option class="qtyOption" value="3">3</option>
+                <!-- Add more options as needed -->
+            </select>
+            <div class="box"></div>
+
+            <!-- Address Section -->
+            <label for="housenoOrBuildingName">House No./Building Name: *</label>
+            <input type="text" id="housenoOrBuildingName" name="house no Or building name" class="styledInput" required>
+            <label for="roadNameOrAreaOrColony">Road/Name/Area/Colony: *</label>
+            <input type="text" id="roadNameOrAreaOrColony" name="road name Or area Or colony" class="styledInput"
+                required>
+            <label for="pincode">Pincode: *</label>
+            <input type="text" id="pincode" name="pin code" pattern="[0-9]{6}" class="styledInput" required>
+            <label for="city">City: *</label>
+            <input type="text" id="city" name="city" class="styledInput" required>
+            <label for="state">State: *</label>
+            <input type="text" id="state" name="state" class="styledInput" required>
+            <label for="nearbyFamousplace">Nearby Famous Place:</label>
+            <input type="text" id="nearbyFamousPlace" name="nearby famous place" class="styledInput">
+            <div class="box"></div>
+
+            <!-- Contact Section -->
+            <label for="name">Name: *</label>
+            <input type="text" id="name" name="name" class="styledInput" required>
+            <label for="contact number">Contact Number: *</label>
+            <input type="tel" id="contactNumber" class="styledInput" name="contact number" pattern="[0-9]{10}" required>
+            <div class="box"></div>
+            <div id="errBox">
+
+            </div>
+            <button type="button" style="font-size: 16px;" id="order-button" onclick="submitOrder()"><b>Place Order</b></button>
+        </form>
+    </div>
+    <!-- Input Typed -->
+    
+    <script>
+        // Get all elements with the class 'styledInput'
+        const inputElements = document.querySelectorAll('.styledInput');
+
+        // Add input event listener to each element
+        inputElements.forEach(inputElement => {
+            // Add input event listener
+            inputElement.addEventListener('input', function () {
+                // Toggle the 'typed' class based on whether the input has a value
+                inputElement.classList.toggle('typed', inputElement.value.trim() !== '');
+            });
+        });
+    </script>
+
+    <!--  -->
+    <script>
+        function submitOrder() {
+
+            
+            // Reset error styles
+            const requiredFields = document.querySelectorAll('[required]');
+            // requiredFields.forEach(field => {
+            //     field.classList.remove('error');
+            // });
+
+            // Check for empty required fields
+            let hasError = false;
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    //field.classList.add('error');
+                    hasError = true;
+                }
+            });
+
+            if (hasError) {
+                //alert('Please fill in all required fields.');
+                showError("please input the required fields..")
+                return;
+            }
+            
+
+            function showError(message) {
+                // Create a new p element with the error message and add the .err class
+                var errorParagraph = document.createElement("p");
+                errorParagraph.className = "error";
+                errorParagraph.textContent = message;
+
+                // Get the .box element and append the error message to it
+                var errorBox = document.getElementById("errBox");
+                errorBox.appendChild(errorParagraph);
+
+                // Set a timeout to remove the error message after 6 seconds
+                setTimeout(function () {
+                    errorParagraph.remove();
+                }, 6000);
+            }
+            
+
+            // button text change to wait
+            var buttonB = document.getElementById("order-button");
+            buttonB.textContent = "Wait a moment...";
+
+            // Collect form data
+            const formData = new FormData(document.getElementById('order-form'));
+
+            // Send data to Google Sheets (replace YOUR_GOOGLE_FORM_URL with the actual Google Form URL)
+            const googleFormUrl = 'https://script.google.com/macros/s/AKfycbxn-cqsIE5n4sXWk41FIIlBUdG-L1MotTmHe3xRWHr5SI4SBMTAula5BlpkDgmB5_MedQ/exec';
+            fetch(googleFormUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: formData,
+            })
+                .then(response => {
+                    // Handle success or error if needed
+                    console.log('Order submitted successfully');
+                    console.log(response);
+                    window.location.href = "/success.html"; // Redirect to success page
+                })
+                .catch(error => {
+                    console.error('Error submitting order:', error);
+                    window.location.href = "/err.html";
+                    // Optionally handle error and stay on the same page
+                });
+        }
+    </script>
+
+</body>
+
+</html>
