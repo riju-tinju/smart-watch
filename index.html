@@ -255,11 +255,11 @@
                     // Handle success or error if needed
                     console.log('Order submitted successfully');
                     console.log(response);
-                    window.location.href = "/success.html"; // Redirect to success page
+                    window.location.href = "/smart-watch/success"; // Redirect to success page
                 })
                 .catch(error => {
                     console.error('Error submitting order:', error);
-                    window.location.href = "/err.html";
+                    window.location.href = "/smart-watch/err";
                     // Optionally handle error and stay on the same page
                 });
         }
