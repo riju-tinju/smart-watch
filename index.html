@@ -78,11 +78,13 @@
             /* Primary color is orange */
             cursor: pointer;
         }
+
         button:hover {
             background-color: rgb(247, 201, 117);
             /* Primary color is orange */
             cursor: pointer;
         }
+
         input.typed {
             border-color: green;
             /* Change the border color to green */
@@ -127,13 +129,23 @@
 
     <!-- microsoft Clarity -->
     <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
         })(window, document, "clarity", "script", "jow9fhccuo");
     </script>
     <!--  -->
+
+    <!-- Google tag (gtag.js) for analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q4WFFYT2Y4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q4WFFYT2Y4');
+    </script>
 </head>
 
 <body>
@@ -182,11 +194,12 @@
             <div id="errBox">
 
             </div>
-            <button type="button" style="font-size: 16px;" id="order-button" onclick="submitOrder()"><b>Place Order</b></button>
+            <button type="button" style="font-size: 16px;" id="order-button" onclick="submitOrder()"><b>Place
+                    Order</b></button>
         </form>
     </div>
     <!-- Input Typed -->
-    
+
     <script>
         // Get all elements with the class 'styledInput'
         const inputElements = document.querySelectorAll('.styledInput');
@@ -205,7 +218,7 @@
     <script>
         function submitOrder() {
 
-            
+
             // Reset error styles
             const requiredFields = document.querySelectorAll('[required]');
             // requiredFields.forEach(field => {
@@ -226,7 +239,7 @@
                 showError("please input the required fields..")
                 return;
             }
-            
+
 
             function showError(message) {
                 // Create a new p element with the error message and add the .err class
@@ -243,7 +256,7 @@
                     errorParagraph.remove();
                 }, 6000);
             }
-            
+
 
             // button text change to wait
             var buttonB = document.getElementById("order-button");
